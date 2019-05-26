@@ -13,26 +13,39 @@ echo -e "$lan
 #  # #  # # # #  # # # #  # # #  # # # #  # # # # #  # # # #  # ##"
 echo -e "$huang
 1.切换国内软件源                                     2.安装ohmyzsh
-3.修复termux新版的一排键盘
+3.修复termux新版的一排键盘                           4.退出程序
+5.sl跑火车
 "
 #软件部分
 read -p "请输入序号:" xuan
 	case $xuan in
 1)
+	clear
+	echo "更新软件包"
 	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/ stable main">/data/data/com.termux/files/usr/etc/apt/sources.list
-	pkg up -y
+	pkg up -y >/dev/null
 	echo -e "$lan完成"
 	main
 	;;
 2)
-	pkg in curl -y
+	pkg in curl -y >/dev/null
 	sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
 	main
 	;;
 3)
-	mkdir $HONE/.termux>/dev/null
+	mkdir $HONE/.termux >/dev/null 2>&1
 	echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> $HOME/.termux/termux.properties
 	echo "请重启termux"
+	main
+	;;
+4)
+	exit
+	;;
+5)
+	echo "安装中"
+	pkg up -y >/dev/null
+	apt install sl -y >/dev/null
+	sl
 	main
 	;;
 *)
