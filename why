@@ -12,9 +12,9 @@ echo -e "$lan
             ww        ww        hh   h      yy
 #  # #  # # # #  # # # #  # # #  # # # #  # # # # #  # # # #  # ##"
 echo -e "$huang
-1.切换国内软件源                                     2.安装ohmyzsh
-3.修复termux新版的一排键盘                           4.退出程序
-5.sl跑火车
+1.切换国内软件源                            2.安装ohmyzsh
+3.修复termux新版的一排键盘                  4.退出程序
+5.sl跑火车                                  6.安装命令行版百度网盘
 "
 #软件部分
 read -p "请输入序号:" xuan
@@ -43,10 +43,18 @@ read -p "请输入序号:" xuan
 	;;
 5)
 	echo "安装中"
-	pkg up -y >/dev/null
-	apt install sl -y >/dev/null
+	pkg up -y >/dev/null 2>&1
+	apt install sl -y >/dev/null 2>&1
 	sl
 	main
+	;;
+6)
+	echo "deb [trusted=yes] http://termux.iikira.com stable main" >> /data/data/com.termux/files/usr/etc/apt/sources.list
+	echo 安装中
+	pkg up -y >/dev/null 2>&1
+	pkg in baidupcs-go -y >/dev/null 2>&1
+	BaiduPCS-Go config set -appid 266719
+	echo 安装完成，开启请使用BaiduPCS-Go命令启动
 	;;
 *)
 	echo "请输入正确的序号！"
