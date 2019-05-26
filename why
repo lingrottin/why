@@ -2,7 +2,7 @@
 clear
 lan="\033[36m"
 huang="\033[33m"
-function main(){
+function logo(){
 echo -e "$lan
 # # #  # # # #  # # #  # # #  # #  # # # #  # #  # # # #  # # # ##
         ww       ww        ww   hh      yy      yy
@@ -11,10 +11,14 @@ echo -e "$lan
            ww ww     ww ww      hh   h       yy
             ww        ww        hh   h      yy
 #  # #  # # # #  # # # #  # # #  # # # #  # # # # #  # # # #  # ##"
+}
+function main(){
 echo -e "$huang
-1.切换国内软件源                            2.安装ohmyzsh
-3.修复termux新版的一排键盘                  4.退出程序
-5.sl跑火车                                  6.安装命令行版百度网盘
+[1]切换国内软件源                           [2]安装ohmyzsh
+[3]修复termux新版的一排键盘                 [4]退出程序
+[5]安装命令行版百度网盘                     [6]美化vim(spacevim)
+[7]好玩的(装逼)
+----------------------------------------------------------------
 "
 #软件部分
 read -p "请输入序号:" xuan
@@ -42,13 +46,6 @@ read -p "请输入序号:" xuan
 	exit
 	;;
 5)
-	echo "安装中"
-	pkg up -y >/dev/null 2>&1
-	apt install sl -y >/dev/null 2>&1
-	sl
-	main
-	;;
-6)
 	echo "deb [trusted=yes] http://termux.iikira.com stable main" >> /data/data/com.termux/files/usr/etc/apt/sources.list
 	echo 安装中
 	pkg up -y >/dev/null 2>&1
@@ -56,9 +53,18 @@ read -p "请输入序号:" xuan
 	BaiduPCS-Go config set -appid 266719
 	echo 安装完成，开启请使用BaiduPCS-Go命令启动
 	;;
+6)
+  van
+  ;;
 *)
 	echo "请输入正确的序号！"
 	main
 esac
 }
+function van(){
+echo -e "
+[100]sl跑火车
+"
+}
+logo
 main
