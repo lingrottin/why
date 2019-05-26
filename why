@@ -1,0 +1,25 @@
+#!/bin/bash
+clear
+lan="\033[36m"
+huang="\033[33m"
+function main(){
+echo -e "$lan
+# # #  # # # #  # # #  # # #  # #  # # # #  # #  # # # #  # # # ##
+        ww       ww        ww   hh      yy      yy
+         ww     ww ww     ww    hh       yy    yy
+          ww   ww   ww   ww     hhhhhh    yyyyyy
+           ww ww     ww ww      hh   h       yy
+            ww        ww        hh   h      yy
+#  # #  # # # #  # # # #  # # #  # # # #  # # # # #  # # # #  # ##"
+echo -e "$huang
+1.切换国内软件源                                     2.安装ohmyzsh
+"
+#软件部分
+read -p "请输入序号:" $xuan
+	case $xuan in
+1)
+	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/ stable main">$HOME../usr/etc/apt/sources.list
+	;;
+esac
+}
+main
