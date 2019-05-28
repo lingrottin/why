@@ -4,23 +4,26 @@ lan="\033[36m"
 huang="\033[33m"
 function logo(){
 echo -e "$lan
-# # #  # # # #  # # #  # # #  # #  # # # #  # #  # # # #  # # # ##
-        ww       ww        ww   hh      yy      yy
-         ww     ww ww     ww    hh       yy    yy
-          ww   ww   ww   ww     hhhhhh    yyyyyy
-           ww ww     ww ww      hh   h       yy
-            ww        ww        hh   h      yy
-#  # #  # # # #  # # # #  # # #  # # # #  # # # # #  # # # #  # ##"
+                             _    
+                            | |
+                   __      _| |__  _   _
+                   \ \ /\ / / '_ \| | | |
+                    \ V  V /| | | | |_| |
+                     \_/\_/ |_| |_|\__, |
+                                    __/ |
+                                   |___/'
+"
 }
 function main(){
 echo -e "$huang
+----------------------------------------------------------------
 [1]切换国内软件源                           [2]安装ohmyzsh
 [3]修复termux新版的一排键盘                 [4]退出程序
 [5]安装命令行版百度网盘                     [6]美化vim(spacevim)
 [7]安装各种python工具                       [8]好玩的东西
+[9]安装基本工具
 ----------------------------------------------------------------
 "
-#软件部分
 read -p "请输入序号:" xuan
 	case $xuan in
 1)
@@ -36,7 +39,13 @@ read -p "请输入序号:" xuan
 	main
 	;;
 3)
-	mkdir $HONE/.termux >/dev/null 2>&1
+  cd ~
+  if test -d .termux
+  then 
+    cd 
+  else
+	mkdir $HONE/.termux
+  fi
 	echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> $HOME/.termux/termux.properties
 	echo "请重启termux"
 	main
@@ -61,6 +70,25 @@ read -p "请输入序号:" xuan
 8)
   van
   ;;
+9)
+  cd ~
+  pkg in tar unzip python git wget curl -y >log.txt
+  echo "安装完成，日志输出到log.txt"
+  echo "配置pip..."
+  if test -d .pip
+  then 
+    cd 
+  else
+    mkdir .pip
+  fi
+  echo "
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = https://pypi.tuna.tsinghua.edu.cn
+"> ~/.pip/pip.conf
+  main
+  ;;
 *)
 	echo "请输入正确的序号！"
 	main
@@ -70,23 +98,32 @@ function van(){
 clear
 logo
 echo -e "$huang
-[100]sl跑火车          [101]atilo安装linux
-[102]返回
+[100]游戏-sl跑火车      [101]atilo安装linux
+[105]cmatrix仿黑客帝国  [102]返回
+[104]nyancat彩虹猫
 "
 read -p "请输入序号:" vang
 case $vang in
 100)
   pkg in sl -y
   sl 
-  van 
-  echo "启动请使用sl"
+  van
   ;;
 101)
+
   ;;
 102)
   clear 
   logo
   main
+  ;;
+104)
+  pkg in nyancat
+  nyancat
+  ;;
+105)
+  pkg in cmatrix
+  cmatrix
   ;;
 *)
   echo "请输入正确的序号！"
@@ -98,7 +135,7 @@ function py(){
 clear
 logo
 echo -e "$huang 
-[500]返回
+[500]返回          [501]you-get
 "
 read -p "请输入序号:" pyg
 case $pyg in
@@ -106,6 +143,9 @@ case $pyg in
   clear
   logo
   main
+  ;;
+501)
+  pip install you-get
   ;;
 esac
 }
