@@ -11,5 +11,5 @@ bash install.sh
 ```
 需要wget
 wget https://raw.githubusercontent.com/pyg2007/why/master/why
-cp why $PREFIX
+cp why $PREFIX/bin
 ```
