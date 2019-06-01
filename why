@@ -73,7 +73,7 @@ read -p "请输入序号:" xuan
   ;;
 9)
   cd ~
-  pkg in tar unzip python git wget curl -y >log.txt
+  pkg in tar unzip python git wget curl python-dev -y >log.txt
   echo "安装完成，日志输出到log.txt"
   echo "配置pip..."
   if test -d .pip
@@ -111,7 +111,10 @@ case $vang in
   van
   ;;
 101)
-
+echo  “ deb [trusted = yes] https://yadominjinta.github.io/files/ termux extras ”  >>  $ PREFIX /etc/apt/sources.list
+pkg in atilo-cn
+  van
+  echo 安装完成
   ;;
 102)
   clear 
@@ -141,6 +144,7 @@ clear
 logo
 echo -e "$huang 
 [500]返回          [501]you-get
+[502]jupyter
 "
 read -p "请输入序号:" pyg
 case $pyg in
@@ -152,6 +156,9 @@ case $pyg in
 501)
   pip install you-get
   ;;
+502)
+  pkg in clang libzmq libzmq-dev -y
+  pip install jupyter
 esac
 }
 logo
