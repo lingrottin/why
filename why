@@ -29,8 +29,9 @@ read -p "请输入序号:" xuan
 1)
 	clear
 	echo "更新软件包"
-	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux/ stable main">/data/data/com.termux/files/usr/etc/apt/sources.list
-	rm -rf /data/data/com.termux/files/usr/etc/apt/sources.list.d
+  pkg up -y
+	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux stable main">/data/data/com.termux/files/usr/etc/apt/sources.list
+	rm -rf /data/data/com.termux/files/usr/etc/apt/sources.list.d/
 	echo -e "$lan完成"
 	main
 	;;
@@ -101,7 +102,7 @@ logo
 echo -e "$huang
 [100]游戏-sl跑火车      [101]atilo安装linux
 [105]cmatrix仿黑客帝国  [102]返回
-[104]nyancat彩虹猫      [106]月球探索车
+[104]nyancat彩虹猫
 "
 read -p "请输入序号:" vang
 case $vang in
@@ -128,10 +129,6 @@ pkg in atilo-cn
 105)
   pkg in cmatrix -y
   cmatrix
-  ;;
-106)
-  pkg in moon-buggy -y
-  moon-buggy
   ;;
 *)
   echo "请输入正确的序号！"
