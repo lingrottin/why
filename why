@@ -28,10 +28,10 @@ read -p "请输入序号:" xuan
 	case $xuan in
 1)
 	clear
-	echo "更新软件包"
-  pkg up -y
 	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux stable main">/data/data/com.termux/files/usr/etc/apt/sources.list
 	rm -rf /data/data/com.termux/files/usr/etc/apt/sources.list.d/
+	echo "更新软件包"
+	pkg up -y
 	echo -e "$lan完成"
 	main
 	;;
