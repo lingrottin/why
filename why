@@ -112,8 +112,8 @@ case $vang in
   van
   ;;
 101)
-echo  “ deb [trusted = yes] https://yadominjinta.github.io/files/ termux extras ”  >>  $ PREFIX /etc/apt/sources.list
-pkg in atilo-cn
+echo  "deb [trusted=yes] https://yadominjinta.github.io/files/ termux extras"  >>  /data/data/com.termux/files/usr/etc/apt/sources.list
+pkg in atilo-cn -y
   van
   echo 安装完成
   ;;
