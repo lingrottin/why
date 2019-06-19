@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
-lan="\033[36m"
-huang="\033[33m"
+lan="\033[36m "
+huang="\033[33m "
 function logo(){
 echo -e "$lan
                              _    
@@ -15,21 +15,20 @@ echo -e "$lan
 "
 }
 function main(){
-echo -e "$huang
-----------------------------------------------------------------
-[1]切换国内软件源                           [2]安装ohmyzsh
-[3]修复termux新版的一排键盘                 [4]退出程序
-[5]安装命令行版百度网盘                     [6]美化vim(spacevim)
-[7]安装各种python工具                       [8]好玩的东西
-[9]安装基本工具
-----------------------------------------------------------------
+echo -e "\033[33m
+--------------------------------------------------
+[1]切换国内软件源                    [2]安装ohmyzsh
+[3]修复termux新版的一排键盘          [5]安装命令行版百度网盘
+[6]美化vim(spacevim)                 [7]安装各种python工具
+[8]好玩的东西                        [9]安装基本工具
+[4]退出程序
+--------------------------------------------------
 "
 read -p "请输入序号:" xuan
 	case $xuan in
 1)
 	clear
-	echo "deb https://mirrors.tuna.tsinghua.edu.cn/termux stable main">/data/data/com.termux/files/usr/etc/apt/sources.list
-	rm -rf /data/data/com.termux/files/usr/etc/apt/sources.list.d/
+	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
 	echo "更新软件包"
 	pkg up -y
 	echo -e "$lan完成"
@@ -100,9 +99,11 @@ function van(){
 clear
 logo
 echo -e "$huang
+----------------------------------------
 [100]游戏-sl跑火车      [101]atilo安装linux
 [105]cmatrix仿黑客帝国  [102]返回
 [104]nyancat彩虹猫
+----------------------------------------
 "
 read -p "请输入序号:" vang
 case $vang in
