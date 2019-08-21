@@ -1,3 +1,4 @@
 #!/bin/bash
-cp why /data/data/com.termux/files/usr/bin
+cp why $PREFIX/bin
+chmod +x $PREFIX/bin/why
 echo "安装成功"

@@ -30,24 +30,20 @@ read -p "请输入序号:" xuan
 	clear
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
 	echo "更新软件包"
-	pkg up -y
+	apt update -y
 	echo -e "$lan完成"
 	main
 	;;
 2)
 	pkg in curl -y >/dev/null
 	sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
+
+
 	main
 	;;
 3)
-  cd ~
-  if test -d .termux
-  then 
-    cd 
-  else
-	mkdir $HONE/.termux
-  fi
-	echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> $HOME/.termux/termux.properties
+	mkdir /data/data/com.termux/files/home/.termux
+	echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> /data/data/com.termux/files/home/.termux/termux.properties
 	echo "请重启termux"
 	main
 	;;
@@ -73,8 +69,8 @@ read -p "请输入序号:" xuan
   ;;
 9)
   cd ~
-  pkg in tar unzip python git wget curl python-dev -y >log.txt
-  echo "安装完成，日志输出到log.txt"
+  pkg in tar unzip python git wget curl -y
+  echo "安装完成"
   echo "配置pip..."
   if test -d .pip
   then 
