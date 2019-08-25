@@ -16,12 +16,16 @@ echo -e "$lan
 }
 function main(){
 echo -e "\033[33m
---------------------------------------------------
-[1]切换国内软件源                    [2]安装ohmyzsh
-[3]修复termux新版的一排键盘          [5]安装命令行版百度网盘
-[6]美化vim(spacevim)                 [7]安装各种python工具
-[8]好玩的东西                        [9]安装基本工具
-[4]退出程序
+[1]切换国内软件源                    
+[2]安装ohmyzsh
+[3]修复termux新版的一排键盘          
+[4]安装命令行版百度网盘
+[5]美化vim(spacevim)                 
+[6]安装各种python工具
+[7]好玩的东西
+[8]安装基本工具
+[9]安装BiliBiliHelper
+[10]退出程序
 --------------------------------------------------
 "
 read -p "请输入序号:" xuan
@@ -48,26 +52,23 @@ read -p "请输入序号:" xuan
 	main
 	;;
 4)
-	exit
-	;;
-5)
 	echo "deb [trusted=yes] http://termux.iikira.com stable main" >> /data/data/com.termux/files/usr/etc/apt/sources.list
 	echo 安装中
 	pkg in baidupcs-go -y >/dev/null 2>&1
 	BaiduPCS-Go config set -appid 266719
 	echo 安装完成，开启请使用BaiduPCS-Go命令启动
 	;;
-6)
+5)
   curl -sLf https://spacevim.org/cn/install.sh | bash
   echo "下次启动vim自动安装！"
   ;;
-7)
+6)
   py
   ;;
-8)
+7)
   van
   ;;
-9)
+8)
   cd ~
   pkg in tar unzip python git wget curl vim nano -y
   echo "安装完成"
@@ -86,6 +87,21 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
 "> ~/.pip/pip.conf
   main
   ;;
+9)
+  cd ~
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  pkg in node -y
+  git clone https://github.com/metowolf/BilibiliHelper.git
+  cd BilibiliHelper
+  npm install
+  read -p "请输入账号:" user
+  read -p "请输入密码:" pass
+  sed -i "s/USERNAME=/USERNAME=$user/g" .env.example
+  sed -i "s/PASSWORD=/PASSWORD=$pass/g" .env.example
+  ;;
+10)
+	exit
+	;;
 *)
 	echo "请输入正确的序号！"
 	main
