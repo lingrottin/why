@@ -94,10 +94,7 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
   git clone https://github.com/metowolf/BilibiliHelper.git
   cd BilibiliHelper
   npm install
-  read -p "请输入账号:" user
-  read -p "请输入密码:" pass
-  sed -i "s/USERNAME=/USERNAME=$user/g" .env.example
-  sed -i "s/PASSWORD=/PASSWORD=$pass/g" .env.example
+  vim .config
   ;;
 10)
 	exit
