@@ -68,6 +68,7 @@ read -p "请输入序号:" xuan
   echo -e "$white"
   ;;
 6)
+  clear
   py
   ;;
 7)
@@ -157,7 +158,6 @@ pkg in atilo-cn -y
 esac
 }
 function py(){
-clear
 logo
 echo -e "$huang 
 [500]返回          [501]you-get
@@ -180,6 +180,7 @@ case $pyg in
   pip install jupyter
   ;;
 *)
+  clear
   echo -e "\033[31m请输入正确的序号！"
   py
 esac
