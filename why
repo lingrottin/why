@@ -1,23 +1,19 @@
 #!/bin/bash
-clear
-lan="\033[36m "
-huang="\033[33m "
+lan="\033[36m"
+huang="\033[33m"
 white="\033[0m"
+red="\033[31m"
 function logo(){
-echo -e "$lan
-                             _    
-                            | |
-                   __      _| |__  _   _
-                   \ \ /\ / / '_ \| | | |
-                    \ V  V /| | | | |_| |
-                     \_/\_/ |_| |_|\__, |
-                                    __/ |
-                                   |___/'
-"
+	echo -e "$lan
+          _
+__      _| |__  _   _
+\ \\ /\\ / / '_ \\| | | |
+ \\ V  V /| | | | |_| |
+  \\_/\\_/ |_| |_|\\__, |
+                |___/$white"
 }
 function main(){
-echo -e "\033[33m
-[1]切换国内软件源                    
+echo -e "\033[33m[1]切换国内软件源              
 [2]安装ohmyzsh
 [3]修复termux新版的一排键盘          
 [4]安装命令行版百度网盘
@@ -26,9 +22,7 @@ echo -e "\033[33m
 [7]好玩的东西
 [8]安装基本工具
 [9]安装BiliBiliHelper
-[10]退出程序
---------------------------------------------------
-"
+[10]在NEW-WHY中的改进"
 read -p "请输入序号:" xuan
 	case $xuan in
 1)
@@ -79,11 +73,11 @@ read -p "请输入序号:" xuan
   pkg in tar unzip python git wget curl vim nano -y
   echo "安装完成"
   echo "配置pip..."
-  if test -d .pip
+  if test -d ~/.pip
   then 
     cd 
   else
-    mkdir .pip
+    mkdir ~/.pip
   fi
   echo "
 [global]
@@ -105,10 +99,13 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
   vim .config
   ;;
 10)
+	newwhy
+	;;
+q* | e* | Q* | E*)
 	echo -e "$white"
-	exit
 	;;
 *)
+	clear
 	echo -e "\033[31m请输入正确的序号！"
 	main
 esac
@@ -185,5 +182,18 @@ case $pyg in
   py
 esac
 }
-logo
+function newwhy()
+{
+	clear
+	echo "抱歉，newWHY现在所做的工作只是对代码质量的改进，暂无特有功能。"
+	echo -e "\033[32m此问题可能会在下个版本中改进$white"
+	echo -e "By QADT."
+for ((i=2; i>=1; i--))
+do
+	clear
+	logo
+	echo $i
+	sleep 1
+done
+clear
 main
