@@ -5,7 +5,7 @@ white="\033[0m"
 red="\033[31m"
 function logo(){
 	echo -e "$lan
-          _
+new-      _
 __      _| |__  _   _
 \ \\ /\\ / / '_ \\| | | |
  \\ V  V /| | | | |_| |
@@ -24,7 +24,7 @@ echo -e "\033[33m[1]切换国内软件源
 [9]安装BiliBiliHelper
 [10]在NEW-WHY中的改进"
 read -p "请输入序号:" xuan
-	case $xuan in
+case $xuan in
 1)
 	clear
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
@@ -42,8 +42,15 @@ read -p "请输入序号:" xuan
 	main
 	;;
 3)
-	mkdir /data/data/com.termux/files/home/.termux
-	echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> /data/data/com.termux/files/home/.termux/termux.properties
+	if [[ -d "~/.termux" ]] ; then
+		mkdir ~/.termux
+	fi
+	if [[ -f "~/.termux/termux.properties" ]] ; then
+		sed -i 's/^[^#]/#&/' ~/.termux/termux.properties
+		echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" >> ~/.termux/termux.properties
+	else
+		echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" > ~/.termux/termux.properties
+	fi
 	echo "请重启termux"
 	echo -e "$white"
 	main
@@ -57,47 +64,47 @@ read -p "请输入序号:" xuan
 	echo -e "$white"
 	;;
 5)
-  curl -sLf https://spacevim.org/cn/install.sh | bash
-  echo "下次启动vim自动安装！"
-  echo -e "$white"
-  ;;
+  	curl -sLf https://spacevim.org/cn/install.sh | bash
+  	echo "下次启动vim自动安装！"
+  	echo -e "$white"
+  	;;
 6)
-  clear
-  py
-  ;;
+  	clear
+  	py
+  	;;
 7)
-  van
-  ;;
+  	van
+  	;;
 8)
-  cd ~
-  pkg in tar unzip python git wget curl vim nano -y
-  echo "安装完成"
-  echo "配置pip..."
-  if test -d ~/.pip
-  then 
-    cd 
-  else
-    mkdir ~/.pip
-  fi
-  echo "
+  	cd ~
+  	pkg in tar unzip python git wget curl vim nano -y
+  	echo "安装完成"
+  	echo "配置pip..."
+  	if test -d ~/.pip
+  	then 
+    		cd 
+  	else
+    		mkdir ~/.pip
+  	fi
+  	echo "
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 [install]
 trusted-host = https://pypi.tuna.tsinghua.edu.cn
 "> ~/.pip/pip.conf
-  echo -e "$white"
-  main
-  ;;
+  	echo -e "$white"
+  	main
+  	;;
 9)
-  cd ~
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-  pkg in node -y
-  git clone https://github.com/metowolf/BilibiliHelper.git
-  cd BilibiliHelper
-  npm install
-  echo -e "$white"
-  vim .config
-  ;;
+ 	 cd ~
+	  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+	  pkg in node -y
+	  git clone https://github.com/metowolf/BilibiliHelper.git
+	  cd BilibiliHelper
+	  npm install
+	  echo -e "$white"
+	  vim .config
+	  ;;
 10)
 	newwhy
 	;;
@@ -186,8 +193,9 @@ function newwhy()
 {
 	clear
 	echo "抱歉，newWHY现在所做的工作只是对代码质量的改进，暂无特有功能。"
-	echo -e "\033[32m此问题可能会在下个版本中改进$white"
+	echo -e "\033[32m此问题\033[31m可能\033[32m会在下个版本中改进$white"
 	echo -e "By QADT."
+}
 for ((i=2; i>=1; i--))
 do
 	clear
