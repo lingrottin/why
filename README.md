@@ -1,4 +1,5 @@
 # why
+Termux下的多功能工具箱
 ## 安装
 ### 安装方法1：
 ```bash
@@ -13,9 +14,13 @@ wget https://raw.githubusercontent.com/Dcove/why/master/why -O $PREFIX/bin/why
 chmod +x $PREFIX/bin/why
 ```
 
+---
+
 ### 功能使用
 BiliBiliHelper:  
 等待代码跑完后，会自动进入编辑页面，使用i编辑，使用ESC+ZZ进行保存
+
+---
 
 ###### 版权声明
 > 本项目由<a href="https://github.com/purofle">GitHub @purofle</a>制作，后原作者将该项目转至开发不开源的python工具箱`xom-and-why`中  
