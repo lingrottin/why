@@ -1,6 +1,9 @@
 # why
 [![Version](https://img.shields.io/badge/Release-N1.1-red.svg)](https://github.com/dcove/why/releases/tag/N1.1)
 [![LICENSE](https://img.shields.io/badge/License-GPL3.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![ISSUES](https://img.shields.io/github/issues/dcove/why)](https://github.com/Dcove/why/pull)
+[![FORKS](https://img.shields.io/github/forks/dcove/why)](https://github.com/Dcove/why/)
+[![STARS](https://img.shields.io/github/stars/dcove/why)](https://github.com/Dcove/why/)
 <a href="https://github.com/purofle"><img src="https://img.shields.io/badge/Based%20on-purofle%2Fwhy-green.svg" /></a>
 
 Termux下的多功能工具箱
