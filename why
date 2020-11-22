@@ -1,21 +1,22 @@
 #!/bin/bash
-lan="\033[36m"
-huang="\033[33m"
-white="\033[0m"
-red="\033[31m"
+color_blue="\033[36m"
+color_yellow="\033[33m"
+color_origin="\033[0m"
+color_red="\033[31m"
+color_green="\033[32m"
 function logo(){
-	echo -e "$lan
+	echo -e "$color_blue
 new-      _
 __      _| |__  _   _
 \ \\ /\\ / / '_ \\| | | |
  \\ V  V /| | | | |_| |
   \\_/\\_/ |_| |_|\\__, |
-                |___/$white"
+                |___/$color_origin"
 }
 function main(){
-echo -e "\033[33m[1]切换国内软件源              
+echo -e "\033[33m[1]切换至清华大学源              
 [2]安装ohmyzsh
-[3]修复termux新版的一排键盘          
+[3]双排快捷键盘
 [4]安装命令行版百度网盘
 [5]美化vim(spacevim)                 
 [6]安装各种python工具
@@ -30,14 +31,28 @@ case $xuan in
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
 	echo "更新软件包"
 	apt update -y
-	echo -e "$lan完成"
-	echo -e "$white"
+	echo -e "$color_blue完成"
+	echo -e "$color_origin"
 	main
 	;;
 2)
-	pkg in curl -y >/dev/null
-	sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
-
+	# pkg in curl -y >/dev/null
+  # 弃置代码。由于在deb包中已经加入对curl、wget的依赖，所以这个没有作用
+  echo -e "$color_green::$color_origin 请选择版本！"
+  echo -e "[1] Termux-ohmyzsh(更多的颜色、更少的配置、更美观的外观以及自动替换字体和配色方案)"
+  echo -e "[2] Ohmyzsh原版（更加自由但没有自动脚本）"
+  echo -e "[3] 从码云下载的Ohmyzsh原版（更快）" #下载安装脚本并将脚本内的安装网址更换成Gitee.
+  read -p "INPUT>" omzMode
+  case $omzMode in
+    1)
+	    sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
+      ;;
+    2)
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      ;;
+    3)
+      sh -c "curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh | sed 's;REPO\=\${REPO:-ohmyzsh/ohmyzsh};REPO\=\${REPO:-mirrors/oh-my-zsh};' | sed 's?REMOTE\=\${REMOTE:-https://github.com/\${REPO}.git}?REMOTE\=\${REMOTE:-https://gitee.com/${REPO}.git}?'"
+  esac
 
 	main
 	;;
@@ -52,21 +67,22 @@ case $xuan in
 		echo "extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']]" > ~/.termux/termux.properties
 	fi
 	echo "请重启termux"
-	echo -e "$white"
+	echo -e "$color_origin"
 	main
 	;;
 4)
 	echo "deb [trusted=yes] http://termux.iikira.com stable main" >> /data/data/com.termux/files/usr/etc/apt/sources.list
 	echo 安装中
 	pkg in baidupcs-go -y >/dev/null 2>&1
-	BaiduPCS-Go config set -appid 266719
+#	BaiduPCS-Go config set -appid 266719
+# 弃置命令。由于百度的封杀，266719不是最佳的AppID，还有封号危险
 	echo 安装完成，开启请使用BaiduPCS-Go命令启动
-	echo -e "$white"
+	echo -e "$color_origin"
 	;;
 5)
   	curl -sLf https://spacevim.org/cn/install.sh | bash
   	echo "下次启动vim自动安装！"
-  	echo -e "$white"
+  	echo -e "$color_origin"
   	;;
 6)
   	clear
@@ -86,13 +102,8 @@ case $xuan in
   	else
     		mkdir ~/.pip
   	fi
-  	echo "
-[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-[install]
-trusted-host = https://pypi.tuna.tsinghua.edu.cn
-"> ~/.pip/pip.conf
-  	echo -e "$white"
+  	echo -e "\n[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple\n[install]\ntrusted-host = https://pypi.tuna.tsinghua.edu.cn" > ~/.pip/pip.conf
+  	echo -e "$color_origin"
   	main
   	;;
 9)
@@ -102,14 +113,14 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
 	  git clone https://github.com/metowolf/BilibiliHelper.git
 	  cd BilibiliHelper
 	  npm install
-	  echo -e "$white"
+	  echo -e "$color_origin"
 	  vim .config
 	  ;;
 10)
 	newwhy
 	;;
 q* | e* | Q* | E*)
-	echo -e "$white"
+	echo -e "$color_origin"
 	;;
 *)
 	clear
@@ -120,7 +131,7 @@ esac
 function van(){
 clear
 logo
-echo -e "$huang
+echo -e "$color_yellow
 ----------------------------------------
 [100]游戏-sl跑火车      [101]atilo安装linux
 [105]cmatrix仿黑客帝国  [102]返回
@@ -131,7 +142,7 @@ read -p "请输入序号:" vang
 case $vang in
 100)
   pkg in sl -y
-  echo -e "$white"
+  echo -e "$color_origin"
   sl 
   van
   ;;
@@ -139,7 +150,7 @@ case $vang in
 echo  "deb [trusted=yes] https://yadominjinta.github.io/files/ termux extras"  >>  /data/data/com.termux/files/usr/etc/apt/sources.list
 pkg in atilo-cn -y
   van
-  echo -e "安装完成$white"
+  echo -e "安装完成$color_origin"
   ;;
 102)
   clear 
@@ -156,14 +167,14 @@ pkg in atilo-cn -y
   ;;
 *)
   echo -e "\033[31m请输入正确的序号！"
-  echo -e "$white"
+  echo -e "$color_origin"
   van
   ;;
 esac
 }
 function py(){
 logo
-echo -e "$huang 
+echo -e "$color_yellow 
 [500]返回          [501]you-get
 [502]jupyter
 "
@@ -175,11 +186,11 @@ case $pyg in
   main
   ;;
 501)
-  echo -e "$white"
+  echo -e "$color_origin"
   pip install you-get
   ;;
 502)
-  echo -e "$white"
+  echo -e "$color_origin"
   pkg in clang libzmq libzmq-dev -y
   pip install jupyter
   ;;
@@ -192,9 +203,18 @@ esac
 function newwhy()
 {
 	clear
-	echo "抱歉，newWHY现在所做的工作只是对代码质量的改进，暂无特有功能。"
-	echo -e "\033[32m此问题\033[31m可能\033[32m会在下个版本中改进$white"
-	echo -e "By QADT."
+  echo -e "$color_green:: 欢迎来到NEW-WHY！"
+  echo -e "$color_origin[1] CDIL C Programming Guide"
+  read -p "${color_green}INPUT>${color_origin}" newWhyChoose
+  case $newWhyChoose in
+    1)
+      echo -e "${color_red}Coming Soon..."
+      main
+      ;;
+    *)
+      echo -e "${color_red}请正确输入！${color_origin}"
+      exit 1
+  esac
 }
 for ((i=2; i>=1; i--))
 do
