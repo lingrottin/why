@@ -1,5 +1,5 @@
 # why
-[![Version](https://img.shields.io/badge/Release-N1.1-red.svg)](https://github.com/dcove/why/releases/tag/N1.1)
+[![Version](https://img.shields.io/badge/Release-1.2preiew-red.svg)](https://github.com/dcove/why/releases/tag/1.2preview)
 [![LICENSE](https://img.shields.io/badge/License-GPL3.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![ISSUES](https://img.shields.io/github/issues/dcove/why)](https://github.com/Dcove/why/pull)
 [![FORKS](https://img.shields.io/github/forks/dcove/why)](https://github.com/Dcove/why/)
