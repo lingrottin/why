@@ -20,7 +20,10 @@ bash ~/why/install.sh
 wget https://raw.githubusercontent.com/Dcove/why/master/why -O $PREFIX/bin/why
 chmod +x $PREFIX/bin/why
 ```
-
+### 安装方法3：
+1. 打开[Releases](https://github.com/Dcove/why/releases)
+2. 下载Deb文件（使用Termux请下载以Termux结尾的，且下面的命令不要加上sudo;使用Ubuntu、LinuxMint、Deepin、Debian等请下载debian，并加上sudo）
+3. `(sudo) dpkg -i newwhy_*_*.deb`
 ---
 
 ### 功能使用
@@ -34,5 +37,5 @@ BiliBiliHelper:
 > 现在我根据之前为对该项目Pull Request时的fork来重建该项目.  
 > **本项目遵循 GNU PUBLIC LICENSE3.0 协议开源**
   
-*HEXO安装部分的源代码来自QAZS，QAZS采用MPL开源，作者Dcove*
+*HEXO安装部分的源代码来自QAZS，QAZS采用MPL开源，作者Dcove*  
 你可以使用`git clone https://e.coding.net/dcove/qazs/smux.git`克隆qazs（smux是其原名）
