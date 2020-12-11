@@ -1,5 +1,5 @@
 # why
-[![Version](https://img.shields.io/badge/Release-1.2preiew-red.svg)](https://github.com/dcove/why/releases/tag/1.2preview)
+[![Version](https://img.shields.io/badge/Release-1.2preview%20public3-red.svg)](https://github.com/dcove/why/releases/tag/1.2preview-pub3)
 [![LICENSE](https://img.shields.io/badge/License-GPL3.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![ISSUES](https://img.shields.io/github/issues/dcove/why)](https://github.com/Dcove/why/pull)
 [![FORKS](https://img.shields.io/github/forks/dcove/why)](https://github.com/Dcove/why/)
@@ -33,3 +33,6 @@ BiliBiliHelper:
 > 本项目由[GitHub @purofle](https://github.com/purofle)制作，后原作者将该项目转至开发不开源的python工具箱`xom-and-why`中  
 > 现在我根据之前为对该项目Pull Request时的fork来重建该项目.  
 > **本项目遵循 GNU PUBLIC LICENSE3.0 协议开源**
+  
+*HEXO安装部分的源代码来自QAZS，QAZS采用MPL开源，作者Dcove*
+你可以使用`git clone https://e.coding.net/dcove/qazs/smux.git`克隆qazs（smux是其原名）
