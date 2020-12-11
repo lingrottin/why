@@ -14,8 +14,8 @@ __      _| |__  _   _
                 |___/$color_origin"
 }
 function main(){
-echo -e "\033[33m[1]切换至清华大学源              
-[2]安装ohmyzsh
+echo -e "\033[33m[1]切换至清华大学源     [11] 安装HEXO        
+[2]安装ohmyzsh                           
 [3]双排快捷键盘
 [4]安装命令行版百度网盘
 [5]美化vim(spacevim)                 
@@ -119,6 +119,12 @@ case $xuan in
 10)
 	newwhy
 	;;
+11)
+  hexoinset
+  ;;
+debug)
+  theDebugFunction_WHYSH
+  ;;
 q* | e* | Q* | E*)
 	echo -e "$color_origin"
 	;;
@@ -216,6 +222,276 @@ function newwhy()
       exit 1
   esac
 }
+function hexoinset-logo(){
+	inset7='\033[7m'
+	inset27='\033[27m'
+	# 此处hexo图案使用gimp+jp2a制作
+	for tmswait in {1..10}
+	do
+		clear
+		echo -e "\033[34;1m
+              .:kNO:.          
+	   'oKMMMMMMMXd'       $inset7 新WHY HEXO安装器！                      $inset27
+       .:kWMMMMMMMMMMMMMWOc.   $inset7 接下来我将会询问你几个问题.             $inset27
+      KMMMMMxlNMMMMMNlxMMMMMX  $inset7 1.HEXO需要的博客目录？                  $inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 2.HEXO需要的软件源地址？                $inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 3.是否安装了Node.js？                   $inset27
+      WMMMMM.         .MMMMMM  $inset7      |                                  $inset27
+      WMMMMM. xNNNNNk .MMMMMM  $inset7      4.安装Node.js的方式？（单项选择题）$inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 5.安装Hexo的方式？                      $inset27
+      NMMMMMdcXMMMMMNcdMMMMMX  $inset7 本界面还有"`expr 20 - $tmswait`"秒自动关闭                  $inset27
+       .l0MMMMMMMMMMMMMMM0l.   
+           ;xNMMMMMMMNx;       
+              .l0W0l.          
+"
+		sleep 1
+	done
+	for tmswait in {11..20}
+	do
+		clear
+		echo -e "\033[34;1m
+              .:kNO:.          
+	   'oKMMMMMMMXd'       $inset7 新WHY HEXO安装器！                      $inset27
+       .:kWMMMMMMMMMMMMMWOc.   $inset7 接下来我将会询问你几个问题.             $inset27
+      KMMMMMxlNMMMMMNlxMMMMMX  $inset7 1.HEXO需要的博客目录？                  $inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 2.HEXO需要的软件源地址？                $inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 3.是否安装了Node.js？                   $inset27
+      WMMMMM.         .MMMMMM  $inset7      |                                  $inset27
+      WMMMMM. xNNNNNk .MMMMMM  $inset7      4.安装Node.js的方式？（单项选择题）$inset27
+      WMMMMM. kMMMMMO .MMMMMM  $inset7 5.安装Hexo的方式？                      $inset27
+      NMMMMMdcXMMMMMNcdMMMMMX  $inset7 本界面还有"`expr 20 - $tmswait`"秒自动关闭                   $inset27
+       .l0MMMMMMMMMMMMMMM0l.   
+           ;xNMMMMMMMNx;       
+              .l0W0l.          
+"
+		sleep 1
+	done
+}
+
+
+function hexoinset(){
+	hexoinset-logo
+	echo -e "\033[0m""取消请按Control-C"
+	echo -e "$red""1.Hexo需要的博客地址？"
+	echo -e "$red""  （请写出相对于\$HOME的地址，并且请不要在开头加上“/”）"
+	echo -e "$red""  （例如：写blog的实际目录是~/blog）"
+	read -p "INPUT>" NWHY_HEXO_CHO_ADDR
+	echo -e "$red""你选择安装HEXO到$HOME/$NWHY_HEXO_CHO_ADDR。"
+	echo -e "$red""2.安装HEXO需要的软件源地址？"
+	echo -e "$red""  （这将同时选择博客目录的初始化是采用国内我克隆的地址还是通过hexo init）"
+	echo -e "$red""  1) 使用taobao.org国内镜像   | 2)使用npmjs.org官方源"
+	echo -e "$red""  |_使用国内地址(翻译过配置)  |_采用hexo init(github)"
+	read -p "INPUT>" NWHY_HEXO_CHO_REPO
+	case $NWHY_HEXO_CHO_REPO in
+		1)
+			echo ""
+			;;
+		2)
+			echo ""
+			;;
+		*)
+			echo "请正确选择！！！！"
+			exit 1
+	esac
+	echo -e "3.是否安装了Node.js?若没安装请选择安装nodejs的方式"
+	echo -e "  1)编译/二进制安装(别的系统)  2)apt安装(Debian系)"
+	echo -e "  3)yum安装(红帽系)            4)pacman安装(Arch系)   5)apk安装(Alpine)"
+	echo -e "  6)已安装                     7)Termux apt安装(Termux用户绝对不要选1-5,要选就选6/7)"
+	read -p "INPUT>" NWHY_HEXO_CHO_INS
+	case $NWHY_HEXO_CHO_INS in
+		1)
+			echo ""
+			;;
+		2)
+			echo ""
+			;;
+		3)
+			echo ""
+			;;
+		4)
+			echo ""
+			;;
+		5)
+			echo ""
+			;;
+		6)
+			echo ""
+			;;
+		7)
+			echo ""
+			;;
+		*)
+			echo "请正确选择！！！！！"
+			exit 1
+	esac
+	echo -e "5.安装Hexo的方式？"
+	echo -e "  1) \"NPM INSTALL HEXO-CLI -G\""
+	echo -e "  2) \"NPM INSTALL HEXO\"(较推荐)"
+	read -p "INPUT>" NWHY_HEXO_CHO_NPM
+	case $NWHY_HEXO_CHO_NPM in
+		1)
+			echo ""
+			;;
+		2)
+			echo ""
+			;;
+		*)
+			echo "请正确选择！！！！！"
+			exit 1
+	esac
+	hexoinsets
+
+}
+hexoinsets(){
+	echo "安装NODE.js中，请稍等..."
+	if [ $NWHY_HEXO_CHO_INS -eq 1 ]; then
+		echo "请选择你的架构"
+		echo "1) x86(v9.11.2)  2) x64 3) arm64(aarch64) 4) 其它(编译安装)"
+		read -p "INPUT>" NWHY_HEXO_CHO_ARCH
+		case $NWHY_HEXO_CHO_ARCH in
+			1) 
+				nodeget86
+				;;
+			2)
+				nodeget64
+				;;
+			3)
+				nodegetarm64
+				;;
+			4)
+				nodegetcode
+				;;
+			*)
+				echo "请正确输入！！"
+		esac
+	elif [ $NWHY_HEXO_CHO_INS -eq 2 ] ; then
+		sudo apt-get install nodejs npm -y
+	elif [ $NWHY_HEXO_CHO_INS -eq 3 ] ; then
+		sudo yum install nodejs npm -y
+	elif [ $NWHY_HEXO_CHO_INS -eq 4 ] ; then
+		sudo pacman -S nodejs npm
+	elif [ $NWHY_HEXO_CHO_INS -eq 5 ] ; then
+		sudo apk add nodejs npm
+	elif [ $NWHY_HEXO_CHO_INS -eq 6 ] ; then
+		echo -n "已安装."
+	elif [ $NWHY_HEXO_CHO_INS -eq 7 ] ; then
+		apt install nodejs npm
+	fi
+	echo "$color_green::$origin 安装成功！"
+	case $NWHY_HEXO_CHO_REPO in
+		2)
+			case $NWHY_HEXO_CHO_NPM in
+				1)
+					npm install hexo-cli -g
+					;;
+				2) 
+					npm install hexo
+					echo -e "请在自己shell的配置文件中添加\"alias hexo=\'npx hexo\'\""
+					alias hexo="npx hexo"
+					;;
+			esac
+			;;
+		1)
+			case $NWHY_HEXO_CHO_NPM in
+				1)
+					npm install hexo-cli -g --registry=https://registry.npm.taobao.org
+					;;
+				2)
+					npm install hexo --registry=https://registry.npm.taobao.org
+					echo -e "请在自己shell的配置文件中添加\"alias hexo=\'npx hexo\'\""
+					alias hexo="npx hexo"
+					;;
+			esac
+			;;
+	esac
+	echo -e "$color_green::$color_origin HEXO安装成功"
+	case $NWHY_HEXO_CHO_REPO in
+		1)
+			git clone "https://gitee.com/dcove/hexosc.git" $HOME/$NWHY_HEXO_CHO_ADDR
+			;;
+		2)
+			hexo init $HOME/$NWHY_HEXO_CHO_ADDR
+			;;
+	esac
+	echo -e "$color_green::$color_origin hexo初始化完成"
+}
+
+
+
+	
+function nodeget86(){
+	wget -O ~/node-9.11.2-lx86.tar.gz "https://npm.taobao.org/mirrors/node/v9.11.2/node-v9.11.2-linux-x86.tar.gz"
+	if [[ $(shasum -a 256 ~/node-9.11.2-lx86.tar.gz) != "166cc28bd9c8217c533b2921edd5e980b14f1d670d828e9d40c1d5b37f51496d  ~/node-9.11.2-lx86.tar.gz" ]] ; then
+		echo "文件未通过SHA256检查！重新下载..."
+		rm -rf ~/node-9.11.2-lx86.tar.gz
+		nodeget86
+	fi
+	tar -zxvf ~/node-9.11.2-lx86.tar.gz
+	rm -rf ~/node-v9.11.2-linux-x86/README.md ~/node-v9.11.2-linux-x86/LICENSE ~/node-v9.11.2-linux-x86/CHANGELOG.md
+	sudo cp -rf ~/node-v9.11.2-linux-x86/* $PREFIX/usr/
+}
+function nodeget64(){
+	wget -O ~/node-v13.7-lx64.tar.gz "https://npm.taobao.org/mirrors/node/v13.7.0/node-v13.7.0-linux-x64.tar.gz"
+	if [[ $(shasum -a 256 ~/node-v13.7-lx64.tar.gz) != "49ecb710e29c3ea0617803f450e2dc9b229688f1576190826ffdd5a9eaae7869  ~/node-v13.7-lx64.tar.gz" ]] ; then
+		echo "文件未通过SHA256检查！重新下载..."
+		rm -rf ~/node-v13.7-lx64.tar.gz
+		nodeget64
+	fi
+	tar -zxvf ~/node-v13.7-lx64.tar.gz
+	rm -rf ~/node-v13.7.0-linux-x64/CHANGELOG.md ~/node-v13.7.0-linux-x64/README.md ~/node-v13.7.0-linux-x64/LICENSE
+	sudo cp -rf ~/node-v13.7.0-linux-x64/* $PREFIX/usr/
+}
+function nodegetarm64(){
+	wget -O ~/node-v13.7-la64.tar.gz "https://npm.taobao.org/mirrors/node/v13.7.0/node-v13.7.0-linux-arm64.tar.gz"
+	if [[ $(shasum -a 256 ~/node-v13.7-la64.tar.gz) != "fb492b493e13ddad73533f5b06318b7f46120ff4289475e0e91445370be1b13c  ~/node-v13.7-la64.tar.gz" ]] ; then
+		echo "文件未通过SHA256检查！重新下载..."
+		rm -rf ~/node-v13.7-la64.tar.gz
+		nodegetarm64
+	fi
+	tar -zxvf ~/node-v13.7-la64.tar.gz
+	rm -rf ~/node-v13.7.0-linux-arm64/CHANGELOG.md ~/node-v13.7.0-linux-arm64/README.md ~/node-v13.7.0-linux-arm64/LICENSE
+	sudo cp -rf ~/node-v13.7.0-linux-arm64/* $PREFIX/usr/
+}
+function nodegetcode(){
+	wget -O ~/node-v13.7.tar.gz "https://npm.taobao.org/mirrors/node/v13.7.0/node-v13.7.0.tar.gz"
+	if [[ $(shasum -a 256 ~/node-v13.7.tar.gz) != "441a1b2b6031f359597fb68b82fd27dfbbe5933f9e1242f6a03062c2abd88368  ~/node-v13.7.tar.gz" ]];then
+		echo "文件未通过SHA256检查！重新下载..."
+		rm -rf ~/node-v13.7.tar.gz
+		nodegetcode
+	fi
+	tar -zxvf ~/node-v13.7.tar.gz
+	echo -e "$green""Making..."
+	make -v >> /dev/null
+	if [ $? -eq 127 ] ; then
+		echo -e "$red请安装MAKE！"
+		exit 127
+	fi
+	make -C ~/node-v13.7.0/
+	sudo make -C ~/node-v13.7.0/ install
+}
+function theDebugFunction_WHYSH(){
+  #一个简单的可运行函数的shell，使用的底层shell取决于解释器
+  errorCodeInWhySH=$?
+  read -p "$errorCodeInWhySH[$(pwd)]whysh? " theCommandInWhySH
+  case $theCommandInWhySH in
+    ls)
+      ls --color=tty
+      ;;
+    la)
+      ls -a --color=tty
+      ;;
+    ll)
+      ls -lah --color=tty
+      ;;
+    exit)
+      return
+      ;;
+    *)
+      $theCommandInWhySH
+  esac
+  theDebugFunction_WHYSH
+}
+
 for ((i=2; i>=1; i--))
 do
 	clear
