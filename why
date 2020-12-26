@@ -375,7 +375,7 @@ hexoinsets(){
 	elif [ $NWHY_HEXO_CHO_INS -eq 6 ] ; then
 		echo -n "已安装."
 	elif [ $NWHY_HEXO_CHO_INS -eq 7 ] ; then
-		apt install nodejs npm
+		apt install nodejs
 	fi
 	echo "$color_green::$origin 安装成功！"
 	case $NWHY_HEXO_CHO_REPO in
