@@ -1,9 +1,9 @@
 # why
-[![Version](https://img.shields.io/badge/Release-1.2preview%20public3-red.svg)](https://github.com/dcove/why/releases/tag/1.2preview-pub3)
+[![Version](https://img.shields.io/badge/Release-1.2preview%20public3-red.svg)](https://github.com/lingrottin/why/releases/tag/1.2preview-pub3)
 [![LICENSE](https://img.shields.io/badge/License-GPL3.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![ISSUES](https://img.shields.io/github/issues/dcove/why)](https://github.com/Dcove/why/pull)
-[![FORKS](https://img.shields.io/github/forks/dcove/why)](https://github.com/Dcove/why/)
-[![STARS](https://img.shields.io/github/stars/dcove/why)](https://github.com/Dcove/why/)
+[![ISSUES](https://img.shields.io/github/issues/dcove/why)](https://github.com/lingrottin/why/pull)
+[![FORKS](https://img.shields.io/github/forks/dcove/why)](https://github.com/lingrottin/why/)
+[![STARS](https://img.shields.io/github/stars/dcove/why)](https://github.com/lingrottin/why/)
 <a href="https://github.com/purofle"><img src="https://img.shields.io/badge/Based%20on-purofle%2Fwhy-green.svg" /></a>
 
 Termux下的多功能工具箱
